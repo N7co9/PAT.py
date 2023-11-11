@@ -1,0 +1,6 @@
+wheel
+Pillow~=10.1.0
+pyautogui >= 0.9
+opencv-python >= 4
+win32gui
+pywin32 >=227
