@@ -14,7 +14,6 @@ class Spy:
             img = Image.open(
                 'C:\\Users\\root\\Documents\\PythonProjects\\Wizzard101-PetAutomationTool\\Spy\\ImageTemplates\\DanceGamePopUp.png')
             pyautogui.locateOnScreen(img, 0.0, confidence=0.7)
-            pyautogui.press('x')
         except ImageNotFoundException:
             return ImageNotFoundException
 
@@ -23,9 +22,6 @@ class Spy:
             img = Image.open(
                 'C:\\Users\\root\\Documents\\PythonProjects\\Wizzard101-PetAutomationTool\\Spy\\ImageTemplates\\Level.png')
             coordinates = pyautogui.locateOnScreen(img, 0.0, confidence=0.9)
-            coordinates = pyscreeze.center(coordinates)
-            pyautogui.moveTo(coordinates)
-            pyautogui.click(coordinates, clicks=1)
             return coordinates
         except ImageNotFoundException:
             return ImageNotFoundException
@@ -35,9 +31,6 @@ class Spy:
             img = Image.open(
                 'C:\\Users\\root\\Documents\\PythonProjects\\Wizzard101-PetAutomationTool\\Spy\\ImageTemplates\\Play.png')
             coordinates = pyautogui.locateOnScreen(img, 0.0, confidence=0.7)
-            coordinates = pyscreeze.center(coordinates)
-            pyautogui.moveTo(coordinates)
-            pyautogui.click(coordinates, clicks=1)
             return coordinates
         except ImageNotFoundException:
             return ImageNotFoundException
@@ -58,7 +51,6 @@ class Spy:
 
             try:
                 pixel = im.getpixel(center)
-
                 if pixel != (67, 64, 135):
                     self.catch_sequence()
                     # yay, finished loading
