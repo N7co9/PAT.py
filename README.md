@@ -10,11 +10,11 @@ CURRENT ISSUE / KNOWN BUGS:
 - only works with a single entry: meaning that you can only execute the script, when you stand infront of the mini game
 - and the dance game popup occurs. multiple entries e.g. when already in the loading screen or level select needed.
 
-  COMING SOON / TO-DO:
-  - user friendly GUI.
-  - requirements pre-install.
-  - click & forget.
-  - testing.
+COMING SOON / TO-DO:
+- user friendly GUI.
+- requirements pre-install.
+- click & forget.
+- testing.
 
 ## Installation
 
