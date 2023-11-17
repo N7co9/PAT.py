@@ -1,6 +1,9 @@
+
 import pyautogui
 import time
 import pyscreeze
+import os
+import re
 
 
 class Action:
@@ -27,5 +30,22 @@ class Action:
     def simulate_key_presses(self, keys):
         """Simulates pressing a sequence of keys."""
         for key in keys:
+            time.sleep(0.5)
             pyautogui.press(key)
-            time.sleep(0.3)  # Adjust the sleep duration if needed
+            # Adjust the sleep duration if needed
+
+    def clean_root_directory(self):
+        # Define the naming pattern for image files to be deleted
+        pattern = re.compile(r'image_(\d+)\.png')
+
+        # Get a list of files in the root directory
+        root_files = os.listdir()
+
+        # Iterate through files and delete those that match the naming pattern
+        for file in root_files:
+            if pattern.match(file):
+                try:
+                    os.remove(file)
+                    print(f"Deleted: {file}")
+                except Exception as e:
+                    print(f"Error deleting {file}: {e}")

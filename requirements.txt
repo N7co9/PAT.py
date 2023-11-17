@@ -1,5 +1,6 @@
 Pillow~=10.1.0
 pyautogui >= 0.9
-win32gui
+pywin32
+opencv-python
 
 PyScreeze~=0.1.30
