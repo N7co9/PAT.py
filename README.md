@@ -1,5 +1,5 @@
 
-# PAT.py - Wizard101 PetAutomationTool 
+# PAT.py - a Wizard101 PetAutomationTool 
 
 PAT.py is a small scale, vanilla python project, that aims to help out with the pet mechanic in Wizard101. 
 
