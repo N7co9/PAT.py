@@ -1,33 +1,36 @@
 
-# Wizard101-PetAutomationTool
+# PAT.py - Wizard101 PetAutomationTool 
 
-small scale python project utilizing pyautogui, pillow and opencv to catch and repeat the sequence from the dance game in pet pavilion.
+PAT.py is a small scale, vanilla python project, that aims to help out with the pet mechanic in Wizard101. 
 
-CURRENT ISSUE / KNOWN BUGS:
-- messy code.
-- only works with first level at the moment.
-- stricter SOLID compliance needed / bad readability.
-- only works with a single entry: meaning that you can only execute the script, when you stand infront of the mini game
-- and the dance game popup occurs. multiple entries e.g. when already in the loading screen or level select needed.
 
-COMING SOON / TO-DO:
-- user friendly GUI.
-- requirements pre-install.
-- click & forget.
-- testing.
+
+## Coming to PAT.py
+
+- Auto Minigame Playthrough & Auto Feeding.
+- Graphical UserInterface.
+- Progress tracking & statistic features.
+
 
 ## Installation
 
-clone the src code and run the app.py script - requires pip and python
+No Release available at the moment.
 ```bash
-cd into directory
-pip install requirements.txt
-./app.py
+    pip install -r requirements.txt
+
 ```
     
+## Authors
+
+- [@N7co9](https://github.com/N7co9)
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
 ## Acknowledgements
 
- - [wizwalker](https://github.com/wizwalker/wizwalker)
- - [Deimos](https://github.com/Slackaduts/Deimos-Wizard101)
-
-
+- wizwalker [https://github.com/wizwalker/wizwalker]
+- deimos [https://github.com/Slackaduts/Deimos-Wizard101]
