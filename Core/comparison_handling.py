@@ -1,50 +1,63 @@
+import os
+import re
+import cv2
+from pyautogui import ImageNotFoundException
 from PIL import Image
 import pyautogui
-from pyautogui import ImageNotFoundException
-
 
 class ComparisonHandling:
-    def compare_sequence(self):
+
+    def compare_sequence(self, num):
         # Open the template images
-        up_template = Image.open('C:\\Users\\root\\Documents\\PythonProjects\\Wizzard101-PetAutomationTool\\Spy\\ImageTemplates\\up.png')
-        down_template = Image.open('C:\\Users\\root\\Documents\\PythonProjects\\Wizzard101-PetAutomationTool\\Spy\\ImageTemplates\\down.png')
-        left_template = Image.open('C:\\Users\\root\\Documents\\PythonProjects\\Wizzard101-PetAutomationTool\\Spy\\ImageTemplates\\left.png')
-        right_template = Image.open('C:\\Users\\root\\Documents\\PythonProjects\\Wizzard101-PetAutomationTool\\Spy\\ImageTemplates\\right.png')
+        up_template = cv2.imread('Spy\\ImageTemplates\\up.png')
+        down_template = Image.open('Spy\\ImageTemplates\\down.png')
+        left_template = Image.open('Spy\\ImageTemplates\\left.png')
+        right_template = Image.open('Spy\\ImageTemplates\\right.png')
 
-        # Open the request images
-        first_request = Image.open('C:\\Users\\root\\Documents\\PythonProjects\\Wizzard101-PetAutomationTool\\Image_1.png')
-        second_request = Image.open('C:\\Users\\root\\Documents\\PythonProjects\\Wizzard101-PetAutomationTool\\Image_2.png')
-        third_request = Image.open('C:\\Users\\root\\Documents\\PythonProjects\\Wizzard101-PetAutomationTool\\Image_3.png')
+        # Define the naming pattern for request images
+        pattern = re.compile(r'image_(\d+)\.png')
 
-        # Define a list of request images for easier iteration
-        request_images = [first_request, second_request, third_request]
+        # Construct the path to the Screenshots directory for the specified num
+        screenshots_directory = os.path.join('Spy\\Sequence', f"Screenshots_{num}")
 
-        # Define a list of templates for easier iteration
-        templates = [up_template, down_template, left_template, right_template]
+        # Check if the Screenshots directory for the specified num exists
+        if os.path.exists(screenshots_directory):
+            # Get a list of files in the Screenshots directory
+            files_in_directory = os.listdir(screenshots_directory)
 
-        # Initialize an empty list to store the results
-        results = []
+            # Filter files based on the naming pattern
+            request_images = [Image.open(os.path.join(screenshots_directory, file)) for file in files_in_directory if pattern.match(file)]
 
-        # Iterate through each request image
-        for request_index, request_image in enumerate(request_images):
-            # Initialize the result string for the current request
-            result_for_request = "Unknown"
+            # Define a list of templates for easier iteration
+            templates = [up_template, down_template, left_template, right_template]
 
-            # Iterate through each template
-            for template_index, template in enumerate(templates):
-                try:
-                    # Locate the template within the current request image
-                    location = pyautogui.locate(request_image, template, confidence=0.9)
-                    # If the template is found, set the result for the current request
-                    if location:
-                        result_for_request = ['Up', 'Down', 'Left', 'Right'][template_index]
-                        break  # Break out of the inner loop once a match is found
-                except ImageNotFoundException:
-                    # Handle the case when the template is not found
-                    pass
+            # Initialize an empty list to store the results for the current directory
+            results_for_directory = []
 
-            # Append the result for the current request to the results list
-            results.append(result_for_request)
+            # Iterate through each request image
+            for request_index, request_image in enumerate(request_images):
+                # Initialize the result string for the current request
+                result_for_request = "Unknown"
 
-        # Return the list of results
-        return results
+                # Iterate through each template
+                for template_index, template in enumerate(templates):
+                    try:
+                        # Locate the template within the current request image
+                        location = pyautogui.locate(request_image, template, confidence=0.91)
+                        # If the template is found, set the result for the current request
+                        if location:
+                            result_for_request = ['Up', 'Down', 'Left', 'Right'][template_index]
+                            break  # Break out of the inner loop once a match is found
+                    except ImageNotFoundException:
+                        # Handle the case when the template is not found
+                        pass
+
+                # Append the result for the current request to the results list
+                results_for_directory.append(result_for_request)
+
+            # Return the results for the current directory
+            return results_for_directory
+
+        else:
+            print(f"Screenshots directory for num={num} does not exist.")
+            return None
