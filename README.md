@@ -17,7 +17,7 @@ PAT.py is a small scale, vanilla python project, that aims to help out with the 
 - Download PAT.PY Pre-Release.
 - Extract the .zip and run the .exe
 - Keep the Console open, check for errors.
-- ** You need to stand infront of the Dance Game and the Popup has to be visible! **
+- **You need to stand infront of the Dance Game and the Popup has to be visible!**
     
 ## Authors
 
