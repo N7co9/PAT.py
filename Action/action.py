@@ -26,11 +26,26 @@ class Action:
             coordinates = pyscreeze.center(coordinates)
             pyautogui.moveTo(coordinates)
             pyautogui.click(coordinates, clicks=1)
+        time.sleep(1.5)
+
+    def simulate_next_selection(self, coordinates):
+        """Simulates a level selection at the given coordinates."""
+        if coordinates is not None:
+            coordinates = pyscreeze.center(coordinates)
+            pyautogui.moveTo(coordinates)
+            pyautogui.click(coordinates, clicks=1)
+
+    def simulate_finish_selection(self, coordinates):
+        """Simulates a level selection at the given coordinates."""
+        if coordinates is not None:
+            coordinates = pyscreeze.center(coordinates)
+            pyautogui.moveTo(coordinates)
+            pyautogui.click(coordinates, clicks=1)
 
     def simulate_key_presses(self, keys):
         """Simulates pressing a sequence of keys."""
         for key in keys:
-            time.sleep(0.5)
+            time.sleep(0.25)
             pyautogui.press(key)
             # Adjust the sleep duration if needed
 
